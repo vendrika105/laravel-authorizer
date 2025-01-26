@@ -1,0 +1,19 @@
+{
+    "name": "vendrika105/laravel-authorization",
+    "description": "Authorization Library for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Vendrika105\\LaravelAuthorization\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "vendrika105",
+            "email": "vendrika105@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
