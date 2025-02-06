@@ -55,6 +55,14 @@ class Authorizer
 
     public function hasPartialRoles(...$roles): bool
     {
+        $stored_roles = $this->getRoles();
 
+        foreach ($roles as $role) {
+            if (in_array($role, $stored_roles)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
