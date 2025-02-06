@@ -4,9 +4,9 @@ namespace Vendrika105\LaravelAuthorization;
 
 class Authorizer
 {
-    public function hasExactPermissions(...$permissions): bool
+    public function hasExactPermissions(string|int $user_id, array $permissions): bool
     {
-        $stored_permissions = $this->getPermissions();
+        $stored_permissions = $this->getPermissions($user_id);
 
         foreach ($permissions as $permission) {
             if (!in_array($permission, $stored_permissions)) {
@@ -17,14 +17,14 @@ class Authorizer
         return true;
     }
 
-    public function getPermissions(): array
+    public function getPermissions(string|int $user_id): array
     {
 
     }
 
-    public function hasPartialPermissions(...$permissions): bool
+    public function hasPartialPermissions(string|int $user_id, array $permissions): bool
     {
-        $stored_permissions = $this->getPermissions();
+        $stored_permissions = $this->getPermissions($user_id);
 
         foreach ($permissions as $permission) {
             if (in_array($permission, $stored_permissions)) {
@@ -35,9 +35,9 @@ class Authorizer
         return false;
     }
 
-    public function hasExactRoles(...$roles): bool
+    public function hasExactRoles(string|int $user_id, array $roles): bool
     {
-        $stored_roles = $this->getRoles();
+        $stored_roles = $this->getRoles($user_id);
 
         foreach ($roles as $role) {
             if (!in_array($role, $stored_roles)) {
@@ -48,14 +48,14 @@ class Authorizer
         return true;
     }
 
-    public function getRoles(): array
+    public function getRoles(string|int $user_id): array
     {
 
     }
 
-    public function hasPartialRoles(...$roles): bool
+    public function hasPartialRoles(string|int $user_id, array $roles): bool
     {
-        $stored_roles = $this->getRoles();
+        $stored_roles = $this->getRoles($user_id);
 
         foreach ($roles as $role) {
             if (in_array($role, $stored_roles)) {
