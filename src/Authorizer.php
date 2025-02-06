@@ -6,6 +6,19 @@ class Authorizer
 {
     public function hasExactPermissions(...$permissions): bool
     {
+        $stored_permissions = $this->getPermissions();
+
+        foreach ($permissions as $permission) {
+            if (!in_array($permission, $stored_permissions)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public function getPermissions(): array
+    {
 
     }
 
@@ -27,10 +40,5 @@ class Authorizer
     public function getRoles(): array
     {
 
-    }
-
-    public function getPermissions(): array
-    {
-        
     }
 }
