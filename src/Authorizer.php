@@ -24,7 +24,15 @@ class Authorizer
 
     public function hasPartialPermissions(...$permissions): bool
     {
+        $stored_permissions = $this->getPermissions();
 
+        foreach ($permissions as $permission) {
+            if (in_array($permission, $stored_permissions)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function hasExactRoles(...$roles): bool
