@@ -37,15 +37,23 @@ class Authorizer
 
     public function hasExactRoles(...$roles): bool
     {
+        $stored_roles = $this->getRoles();
 
+        foreach ($roles as $role) {
+            if (!in_array($role, $stored_roles)) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
-    public function hasPartialRoles(...$roles): bool
+    public function getRoles(): array
     {
 
     }
 
-    public function getRoles(): array
+    public function hasPartialRoles(...$roles): bool
     {
 
     }
