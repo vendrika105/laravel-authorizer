@@ -75,4 +75,14 @@ class Authorizer
     {
 
     }
+
+    public function removePermissions(string|int $user_id, array $permissions): bool
+    {
+
+    }
+
+    public function removeRoles(string|int $user_id, array $roles): bool
+    {
+
+    }
 }
