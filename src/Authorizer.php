@@ -2,8 +2,24 @@
 
 namespace Vendrika105\LaravelAuthorization;
 
+use Vendrika105\LaravelAuthorization\Interfaces\StorageInterface;
+
 class Authorizer
 {
+    protected StorageInterface $storage;
+
+    public function getStorage(): StorageInterface
+    {
+        return $this->storage;
+    }
+
+    public function setStorage(StorageInterface $storage): static
+    {
+        $this->storage = $storage;
+
+        return $this;
+    }
+
     public function hasExactPermissions(string|int $user_id, array $permissions): bool
     {
         $stored_permissions = $this->getPermissions($user_id);
