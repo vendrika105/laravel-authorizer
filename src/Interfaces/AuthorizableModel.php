@@ -1,6 +1,6 @@
 <?php
 
-namespace Vendrika105\LaravelAuthorization\interfaces;
+namespace Vendrika105\LaravelAuthorization\Interfaces;
 
 interface AuthorizableModel
 {
