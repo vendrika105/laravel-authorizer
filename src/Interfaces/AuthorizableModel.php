@@ -32,4 +32,6 @@ interface AuthorizableModel
     public function assignRoles(...$roles): bool;
 
     public function removeRoles(...$roles): bool;
+
+    public function getUserId(): string|int|null;
 }
