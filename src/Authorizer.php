@@ -65,4 +65,14 @@ class Authorizer
 
         return false;
     }
+
+    public function assignPermissions(string|int $user_id, array $permissions): bool
+    {
+
+    }
+
+    public function assignRoles(string|int $user_id, array $roles): bool
+    {
+
+    }
 }
