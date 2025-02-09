@@ -6,6 +6,8 @@ use Vendrika105\LaravelAuthorization\Interfaces\StorageInterface;
 
 class Authorizer
 {
+    protected array $stored_data = [];
+
     protected StorageInterface $storage;
 
     public function getStorage(): StorageInterface
@@ -35,7 +37,11 @@ class Authorizer
 
     public function getPermissions(string|int $user_id): array
     {
+        if (!array_key_exists($user_id, $this->stored_data)) {
+            $this->stored_data[$user_id] = $this->storage->fetchUserData($user_id);
+        }
 
+        return $this->stored_data[$user_id]['permissions'];
     }
 
     public function hasPartialPermissions(string|int $user_id, array $permissions): bool
@@ -66,7 +72,11 @@ class Authorizer
 
     public function getRoles(string|int $user_id): array
     {
+        if (!array_key_exists($user_id, $this->stored_data)) {
+            $this->stored_data[$user_id] = $this->storage->fetchUserData($user_id);
+        }
 
+        return $this->stored_data[$user_id]['roles'];
     }
 
     public function hasPartialRoles(string|int $user_id, array $roles): bool
